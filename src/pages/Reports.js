@@ -1,11 +1,9 @@
 import React from 'react'
 
-function Reports() {
+export default function Reports() {
   return (
     <div className="reports">
-      <h1>Reports</h1>
+      <h1>Reports - User</h1>
     </div>
   )
 }
-
-export default Reports
