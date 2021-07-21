@@ -6,8 +6,13 @@ function Home(props) {
   
     function handleChange() {
       axios.gel(`https://api.github.com/${user}`).then((response)=> {
-        console.log(response);
-      })
+        const repositories = response.data;
+        const repositoriesName = [];
+        repositories.map((repository) => {
+          repositoriesName.push(repository.name);
+        });
+        localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName));
+      });
     }
   
     return (
