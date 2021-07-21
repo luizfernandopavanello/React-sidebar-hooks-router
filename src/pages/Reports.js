@@ -10,8 +10,6 @@ export default function Reports() {
           <S.ListItem>Reports: Name Report 1</S.ListItem>
           <S.ListItem>Reports: Name Report 2</S.ListItem>
           <S.ListItem>Reports: Name Report 3</S.ListItem>
-          <S.ListItem>Reports: Name Report 4</S.ListItem>
-          <S.ListItem>Reports: Name Report 5</S.ListItem>
         </S.List>
       </S.Container>
     </div>
