@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 function Home(props) {
+  const history = useHistory();
   const [ user, setUser ] = useState('');
   
     function handleChange() {
-      axios.gel(`https://api.github.com/${user}`).then((response)=> {
+      axios.gel(`https://api.github.com/${user}/repos`).then((response)=> {
         const repositories = response.data;
         const repositoriesName = [];
         repositories.map((repository) => {
           repositoriesName.push(repository.name);
         });
         localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName));
+        history.push(`./Reports.js`)
       });
     }
   
