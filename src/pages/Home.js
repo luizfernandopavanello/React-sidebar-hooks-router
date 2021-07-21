@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import * as S from './styledPages';
 import { useHistory } from 'react-router-dom';
 
 function Home(props) {
   const history = useHistory();
   const [ user, setUser ] = useState('');
+  const [ error, setError ] = useState(false);
   
     function handleChange() {
-      axios.gel(`https://api.github.com/${user}/repos`).then((response)=> {
-        const repositories = response.data;
-        const repositoriesName = [];
-        repositories.map((repository) => {
-          repositoriesName.push(repository.name);
+      axios.gel(`https://api.github.com/${user}/repos`)
+        .then((response)=> {
+          const repositories = response.data;
+          const repositoriesName = [];
+          repositories.map((repository) => {
+            repositoriesName.push(repository.name);
+          });
+          localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName));
+          setError(false);
+          history.push(`./Reports.js`)
+        })
+        .catch(error => {
+          setError(true)
         });
-        localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName));
-        history.push(`./Reports.js`)
-      });
     }
   
     return (
@@ -33,6 +40,7 @@ function Home(props) {
         type='button'
         onCLick={handleChange}
       >Search</button>
+      { error ? <S.ErrorMessage>Something went wrong</S.ErrorMessage> : ''}
     </div>
   )
 }

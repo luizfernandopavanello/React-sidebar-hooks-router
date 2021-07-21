@@ -29,11 +29,19 @@ export const ListItem = styled.li`
 `
 export const LinkHome = styled(Link)`
   display: block;
-  width: 2rem;
+  width: 4rem;
   text-align: center;
   margin: 2rem auto;
   background-color: #000;
   padding: 0.5rem 0;
   color: #fff;
   text-decoration: none;
+`
+
+export const ErrorMessage = styled.span`
+  display: block;
+  margin: 8px;
+  font-size: 0.85rem;
+  color: #FF0000;
+  font-weight: 600;
 `
